@@ -1,0 +1,15 @@
+Tresciclaje es una plataforma para el Reciclaje, la idea
+es que la plataforma ayude a gestionar cuando los recicladores 
+deben pasar a un sitio a recolectar, sea un Marketplace para las asociaciones de 
+recicladores satisfaciendo la demanda de los grandes transformadores.
+
+En la aplicación y plataforma hay 4 perfiles, el perfil de conjuntos y fuentes; 
+el perfil de las asociaciones que son los centros de acopio del reciclaje y los cuales
+deben tener recicladores a su cargo, llevar un inventario del material que recolecta y poderlo ofrecer 
+a grandes transformadores por medio de un marketplace propio de la plataforma,
+también revisar las rutas de sus camiones y recicladores y mejorar procesos;
+ el perfil de reciclador en el cual el reciclador aplicación
+podrá gestionar y saber los horarios y lugares de recolección;
+en el perfil usuario se podrá ver cuanto a contribuido su casa o conjunto 
+al medio ambiente por medio de estadísticas, acceder a descuentos en tiendas patrocinadoras y acceder
+a información relevante sobre el reciclaje.
