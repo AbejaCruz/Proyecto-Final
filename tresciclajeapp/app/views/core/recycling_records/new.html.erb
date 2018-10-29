@@ -1,0 +1,30 @@
+<div class="card text-center border-success mb-3">
+  <div class="card-header text-success">
+    Registro de Reciclaje
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">Información</h4>
+    <footer class="blockquote-footer ">Asegurese de ingresar correctamente las cantidades de material, recuerde que para el cambio de dichos valores debe comunicarse con nuestra <cite title="Source Title"> linea de atención al cliente</cite></footer>
+    <br>
+    <h5 class="card-text">Para continuar con el registro elija la Fuente de la cual proviene el material y presione el boton Registrar</h5> 
+    <br>    
+    <%= form_for @recycling, url: {action: "create"}, method: 'post' do |f| %>
+      <div class="form-group row justify-content-md-center">
+        <div class="form-group col-md-6">
+          <%= f.label :source, 'Fuente' %>
+          <%= f.collection_select(:source_id, @sources, :id, :name, {prompt: 'Seleccione un Fuente de la lista'}, {class: 'form-control'}) %>
+        </div>
+        <div class="form-group col-md-6">
+          <%= f.label :weight, 'Peso KG' %>
+          <%= f.number_field :weight, class: 'form-control', step: :any %>
+        </div>
+      </div>
+      <div class="form-group row justify-content-md-center">
+        <div class="form-group col-md-4">
+          <%= f.submit "Registrar", class: "btn btn-success", id: "submit"%>
+        </div>
+      </div>
+    <% end %>   
+  </div>
+</div>
+

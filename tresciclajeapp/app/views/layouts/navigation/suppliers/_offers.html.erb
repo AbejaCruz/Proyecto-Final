@@ -1,0 +1,12 @@
+<% if current_user.has_role?(:supplier) %>
+<li class="list-group-item <%= 'active' if @location[:sub_menu] == 'list_offers' %>">
+  <%= link_to "Listado de Ofertas", offers_path, class:'prueba'%>
+</li>
+<li class="list-group-item <%= 'active' if @location[:sub_menu] == 'create_offer' %>">
+  <%= link_to "Crear Oferta", new_offer_path, class:'prueba'%>
+</li>
+<% elsif current_user.has_role?(:admin) %>
+<li class="list-group-item <%= 'active' if @location[:sub_menu] == 'list_offers' %>">
+  <%= link_to "Listado de Ofertas", offers_path,class:'prueba'   %>
+</li>
+<% end %>

@@ -1,0 +1,29 @@
+<nav class="navbar fixed-top navbar-light bg-light">
+  <a class="navbar-brand" href="#"><%=image_tag("LogoTresciclaje.png", size:"78x52")%></a>
+  <%# <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button> %>
+  <%# <div class="collapse navbar-collapse" id="navbarSupportedContent"> %>
+  
+    <ul class='navbar-nav flex-row ml-md-auto  d-md-flex'>      
+      <li class='nav-item dropdown'>
+        <a>
+          <%=link_to 'INICIO', root_path %>    
+        </a>
+      </li>    
+
+      <li class='nav-item dropdown'>
+        <a>
+          <%=link_to 'CONTACTO', new_contact_path %>    
+        </a>
+      </li>  
+  
+      <li class='nav-item mr-sm-2'>
+        <a>
+          <%=link_to 'INICIAR SESIÓN', new_user_session_path, class: 'btn btn-outline-success my-2 my-sm-0' %>    
+        </a>
+      </li>
+    </ul>
+ 
+  <%# </div> %>
+</nav>

@@ -1,0 +1,31 @@
+<div class="shadow bg-white rounded">
+  <div class="card border-light mb-3">
+    <div class="card-header text-success">Listado de Fuentes</div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Nombre Administrador</th>
+            <th scope="col">Número de Personas</th>            
+          </tr>
+        </thead>
+        <tbody>
+          <% @sources.each do |f|%>
+          <tr>
+            <td><%=f.id%></td>
+            <td><%=f.name%></td>
+            <td><%=f.address%></td>
+            <td><%=f.kind%></td>
+            <td><%=f.admin_name%></td>
+            <td><%=f.amount_of_people%></td>
+          </tr>
+          <% end%>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

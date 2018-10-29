@@ -1,0 +1,40 @@
+.col-sm-10.col-md-10
+  .panel.panel-default
+    .panel-heading
+      %h3 Crear Reciclador
+    .panel-body
+      %form{"accept-charset" => "UTF-8", :action => "/materials", :method => "post"}
+        %input{:name => "utf8", :type => "hidden", :value => "✓"}/
+        %input{:name => "authenticity_token", :type => "hidden", :value => "OStSYvQeBxxwYwfLZfs1g4cIvd542dMhhrfdsMrHwzgmnf3PGsSTZFVxXpeq6kLGy4fwYuWoU80thCns/H38zg=="}/
+        .form-group
+          %label.control-label{:for => "registration_name"} Nombre Del Reciclador
+        .form-group
+          %input#registration_name.form-control{:name => "registration[name]", :placeholder => "Nombre Completo", :type => "text"}/
+        .form-group
+          %label.control-label{:for => "registration_identification"} Cédula
+        .form-group
+          %input#registration_identification.form-control{:name => "registration[identification]", :placeholder => "Nombre De Cedula", :type => "text"}/
+        .form-group
+          %label.control-label{:for => "registration_ruro"} Número de Registro RURO
+        .form-group
+          %input#registration_ruro.form-control{:name => "registration[ruro]", :placeholder => "Numero RURO", :type => "text"}/
+        .form-group
+          %label.control-label{:for => "registration_account"} Numero De Cuenta Banco Caja Social
+        .form-group
+          %input#registration_account.form-control{:name => "registration[account]", :placeholder => "Número De Cuenta", :type => "text"}/
+        .col-md-12.col-sm-12
+          .col-md-4.col-sm-4
+            %center
+              %button.btn.btn-success{:name => "button", :type => "submit"}
+                %i.material-icons present_to_all
+                %strong Guardar
+          .col-md-4.col-sm-4
+            %center
+              %button.btn.btn-success{:name => "button", :type => "submit"}
+                %i.material-icons cancel
+                %strong Cancelar
+          .col-md-4.col-sm-4
+            %center
+              %button.btn.btn-success{:name => "button", :type => "submit"}
+                %i.material-icons delete_sweep
+                %strong Limpiar

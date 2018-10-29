@@ -1,0 +1,29 @@
+.shadow.bg-white.rounded
+  .card.border-light.mb-3
+    .card-header.text-success
+      Usuarios Registrados
+    .card-body
+      %table.table.table-bordered
+        %thead
+          %tr
+            %th Código
+            %th Nombre de la Entidad
+            %th Rol
+            %th Acciones
+        %tbody
+          - @users.each do |user|
+            %tr
+              %td
+                = user.prefix
+              %td
+                = user.username
+              %td
+                - user.roles.each do |role|
+                  = "#{I18n.t("roles.#{role.name}")}"
+              %td
+                = link_to(core_user_path(user), class: 'btn btn-success',
+                                                            title: 'Cambiar Rol', 'data-toggle' => 'tooltip', 'data-placement' => 'right')  do
+                  %i.material-icons fingerprint
+                = link_to(edit_core_user_path(user), class: 'btn btn-success',
+                                                                  title: 'Editar Usuario', 'data-toggle' => 'tooltip', 'data-placement' => 'right')  do
+                  %i.material-icons create

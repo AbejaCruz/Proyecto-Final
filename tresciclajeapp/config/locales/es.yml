@@ -1,0 +1,15 @@
+es:
+  roles:
+    admin: 'Administrador'
+    supplier: 'Asosiacion'
+    buyer: 'Transformador'
+    recycler: 'Reciclador'
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "Debe Ingresar un Correo Electrónico"
+            password:
+              blank: "Debe Ingresar una Contraseña"

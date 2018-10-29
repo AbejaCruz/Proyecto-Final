@@ -1,0 +1,11 @@
+<% if current_user.has_role?(:admin) %>
+<li class="list-group-item <%= 'active' if @location[:sub_menu] == 'list_recycler' %>">
+  <%= link_to "Listado de Reciclador", registration_path, class:'prueba'%>
+</li>
+<li class="list-group-item <%= 'active' if @location[:sub_menu] == 'create_recycler' %>">
+  <%= link_to "Crear Reciclador", new_recycler_path, class:'prueba' %>
+</li>
+<li class="list-group-item <%= 'active' if @location[:sub_menu] == 'edit_recycler ' %>">
+  <%= link_to "Editar Reciclador", edit_source_path, class:'prueba' %>
+</li>
+<% end %>

@@ -1,0 +1,21 @@
+%table.table.table-striped
+  %thead
+    %th Código del Material
+    %th Nombre del Material
+    %th Opciones
+  %tbody
+    - @materials.each do |material|
+      %tr
+        %td
+          = material.id
+        %td
+          = material.name
+        %td
+          - # link_to edit_articulo_path(articulo), class: "btn btn-primary" do
+          %i.glyphicon.glyphicon-edit
+          Editar
+          - # end
+%div
+  - link_to new_material_path, class: "btn btn-primary" do
+    %i.glyphicon.glyphicon-edit
+    Volver

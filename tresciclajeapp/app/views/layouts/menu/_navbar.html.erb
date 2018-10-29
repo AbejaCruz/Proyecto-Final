@@ -1,0 +1,108 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#"><%=image_tag("LogoTresciclaje.png", size:"64x42")%></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">    
+      <% if current_user.has_any_role? :admin, :supplier %>    
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="large material-icons">face</i>Usuarios
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to "Crear Usuario", new_core_user_path, method: :get, class: "dropdown-item"%>
+            <%= link_to "Listado de Usuarios", core_users_path, class: "dropdown-item"%>
+        </li>
+      <% end %>
+      <% if current_user.has_role?(:admin) %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="large material-icons">map</i>Zona
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to "Registrar Zona", new_zone_path, method: :get,class: "dropdown-item"%>
+          <%= link_to "Listado de Zonas", zones_path, class: "dropdown-item"%>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="large material-icons">map</i>Fuentes
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to "Registrar Fuente",new_source_path, method: :get,class: "dropdown-item"%>
+          <%= link_to "Listado de Fuentes", sources_path, class: "dropdown-item"%>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="large material-icons">format_list_bulleted</i>Material
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to "Registrar Material", new_material_path, class: "dropdown-item"%>
+          <%= link_to "Listado de Materiales", materials_path, class: "dropdown-item"%>
+        </div>
+      </li>      
+    <% end %>
+    <% if current_user.has_role?(:supplier)%>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="large material-icons">add_shopping_cart</i>Ofertas
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Lista de Ofertas</a>
+          <a class="dropdown-item" href="#">Agregar Oferta</a>
+          <a class="dropdown-item" href="#">Editar Oferta</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="large material-icons">shopping_cart</i>Peticiones
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Lista de Peticiones</a>
+          <a class="dropdown-item" href="#">Agregar Petición</a>
+          <a class="dropdown-item" href="#">Editar Petición</a>
+        </div>
+      </li>
+    <% end %>
+    <% if current_user.has_role?(:recycler) || current_user.has_role?(:supplier) %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="large material-icons">add_shopping_cart</i>Registro
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to "Registrar Reciclaje", new_core_recycling_record_path, method: :get, class: "dropdown-item"%>
+           <%= link_to "Mis Registros", core_recycling_records_path, method: :get, class: "dropdown-item"%>
+        </div>
+      </li>
+    <% end %>
+    </ul>
+    <div class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown">
+        <i class="material-icons">supervisor_account</i><%= current_user.username %>
+        <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+        <% if current_user %>
+        <div class="row-picture">
+          <li class="round-image-50">
+            <% image_tag current_user.photo.url(:thumb)%>
+          </li>
+        </div>
+        <div class="row-content">
+          <h4 class="list-group-item-heading"><%= current_user.username %></h4>
+        </div>
+        <li class="divider"></li>
+        <li>
+          <%= link_to("Editar Perfil", edit_core_user_path(current_user), class:'btn btn-raised btn-info btn-lg') %>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <%= link_to("Salir", destroy_user_session_path, method: :delete, class:'btn btn-raised btn-danger btn-lg') %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,62 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Tresciclaje Plataforma
+  %body
+    / Navigation
+    = render 'layouts/home_partials/navbar'
+    / Page Content    
+    .container.content-contact-page
+      .row
+        .col-lg-6
+          %div
+            %form.form-horizontal{:role => "form"}
+              %fieldset
+                %p
+                  PARA PODER COMPRAR Y VENDER MATERIAL RECICLADO EN TRESCICLAJE DEBES REGISTRARTE
+              = form_for @contact  do |f|
+                .form-group
+                  = f.label :name, "Nombre: ", class: "control-label1"
+                  = f.text_field :name, required: true,  class:"form-control"
+                .form-group
+                  = f.label :email, "Correo: ", class: "control-label1"
+                  = f.text_field :email, required: true, class: "form-control"
+                .form-group
+                  = f.label :phone, "Teléfono", class: "control-label1"
+                  = f.text_field :phone, required: true, class: "form-control"
+                .form-group
+                  = f.label :role, "Comprador", class: "control-label1"
+                  = f.radio_button :role, "Comprador"
+                  = f.label :role, "Vendedor", class:  "control-label1"
+                  = f.radio_button :role, "Vendedor"
+                %br/
+                .form-group
+                  = f.label :message, "Mensaje",class: "control-label1"
+                  = f.text_area :message, as: :text,required: true, class: "form-control"
+                .form-group
+                  = f.submit "Enviar Mensaje", :class => "btn btn-success"
+                %center
+                  %p.men
+                    ¡Únete a
+                    %b TRESCICLAJE
+                    y empieza a ganar en grande!
+
+
+
+        .col-lg-2
+        .col-lg-4
+          %p ENCUÉNTRANOS
+          %p
+            = image_tag("Icono_Teléfono.png", width:"50", height:"auto")
+            3219177316
+          %br/
+          %p
+            = image_tag("Icono_Correo.png", width:"50", height:"auto")
+            Contacto@tresciclaje.com
+          %center
+            = image_tag("Planeta.png", width:"400")
+
+      %br/
+    #demo.collapse
+    = render 'layouts/home_partials/footer'

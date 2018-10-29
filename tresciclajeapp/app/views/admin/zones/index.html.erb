@@ -1,0 +1,25 @@
+<div class="shadow bg-white rounded">
+  <div class="card border-light mb-3">
+    <div class="card-header text-success">Listado de Zonas</div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Zona</th>
+            <th scope="col">Ciudad</th>      
+          </tr>
+        </thead>
+        <tbody>
+          <% @zones.each do |f|%>
+          <tr>
+            <td><%=f.id%></td>
+            <td><%=f.name%></td>
+            <td><%=f.city.name%></td>      
+          </tr>
+          <% end%>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

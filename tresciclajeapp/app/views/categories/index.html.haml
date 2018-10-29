@@ -1,0 +1,26 @@
+.panel.panel-default
+  .panel-heading
+    %h3 Categorías
+  .panel-body
+    - if (@categories.empty?)
+      .bs-callout.bs-callout-danger
+        %h4
+          No tiene registro de Categorías
+    - else
+      %table.table.table-bordered
+        %thead
+          %th Material
+          %th Tipo de Material
+          %th Precio Base * Kilo (Pesos)
+          %th Iva
+        %tbody
+          - @categories.each do |f|
+            %tr
+              %td
+                = f.material.name
+              %td
+                = f.name
+              %td
+                = f.base_price
+              %td
+                = f.iva

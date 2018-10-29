@@ -1,0 +1,44 @@
+.panel.panel-default
+  .panel-heading
+    - if (current_user.has_role?(:supplier))
+      %h3
+        Mis Ofertas Registradas
+    - else
+      %h3 Ofertas Registradas
+  .panel-body
+    - if (@offers.empty?)
+      .bs-callout.bs-callout-danger
+        %h4
+          No Existen Ofertas registradas
+    - else
+      %table.table.table-bordered
+        %thead
+          %th Material
+          %th Categoría
+          %th Descripción
+          %th Cantidad Inicial Registrada
+          %th Cantidad Disponible
+          %th Fecha de Registro
+          %th Fecha de Expiración
+          - if (current_user.has_role?(:admin))
+            %th Precio Total Oferta
+        %tbody
+          - @offers.each do |f|
+            %tr
+              %td
+                = f.category&.material&.name
+              %td
+                = f.category&.name
+              %td
+                = f.description
+              %td
+                = f.initial_amount
+              %td
+                = f.actual_amount
+              %td
+                = f.registration_date
+              %td
+                = f.expiration_date
+              - if (current_user.has_role?(:admin))
+                %td
+                  = f.price

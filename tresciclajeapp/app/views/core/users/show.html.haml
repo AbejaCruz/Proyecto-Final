@@ -1,0 +1,37 @@
+.col-sm-12.form-box
+  .panel.panel-default
+    .panel-heading
+      %h3= "Usuario: #{@user.username}"
+    .panel-body
+      %strong= "#{@user.username}"
+      %br/
+      %em= "Direccion: #{@user.address}"
+      %br/
+      %em= "Telefonos: #{@user.phone}"
+      %br/
+      %em= "Correo electronico: #{@user.email}"
+      %hr/
+      .well.well-sm
+        %h4 Roles en el sistema:
+        .media
+          .media-body
+            - @user.roles.each do |role|
+              = form_tag(core_users_remove_role_path,{class:"row"}) do
+                .bs-callout
+                  .col-md-3.col-xs-6
+                    %input{type: 'number', name: 'user_id', hidden: 'hidden', value: "#{@user.id}"}
+                    %input{type: 'text', name: 'role', hidden: 'hidden', value: "#{role.name }"}
+                    %h4= "#{I18n.t("roles.#{role.name}")}"
+                  .col-md-3.col-xs-6
+                    %input.button.btn.btn-danger{type: 'submit', value: "Eliminar Rol"}
+            %hr/
+            = form_tag(core_users_add_role_path ,{class:"row"}) do
+              .bs-callout
+                .col-md-3.col-xs-6
+                  %h4 Agregar Rol:
+                  %input{type: 'number', name: 'user_id', hidden: 'hidden', value: "#{@user.id}"}
+                  = select_tag(:role, options_for_select([["Asosiacion","supplier"],["Transformador","buyer"],["Administrador","admin"]],"Asosiacion"), class: "form-control")
+                .col-md-3.col-xs-6
+                  %input.btn.btn-raised.btn-success{type: 'submit', value: 'Agregar Rol'}
+            %hr/
+            = render 'back_button'

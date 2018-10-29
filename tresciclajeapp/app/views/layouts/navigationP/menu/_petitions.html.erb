@@ -1,0 +1,15 @@
+<% if current_user.has_role?(:buyer) || current_user.has_role?(:admin)%>
+<div class="panel-heading">
+  <h4 class="panel-title">
+    <a data-toggle="collapse" href="#collapseFour">
+      <div class="<%= 'active' if @location[:menu] == 'petitions' %>">
+        <i class="material-icons">shopping_cart</i>Peticiones</div>
+    </a>
+  </h4>
+</div>
+<div id="collapseFour" class="panel-collapse collapse in">
+  <ul class="list-group">
+    <%= render 'layouts/navigation/buyers/petitions' %>
+  </ul>
+</div>
+<% end %>

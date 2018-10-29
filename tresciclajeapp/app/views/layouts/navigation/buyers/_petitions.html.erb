@@ -1,0 +1,12 @@
+<% if current_user.has_role?(:buyer) %>
+<li class="list-group-item <%= 'active' if @location[:sub_menu] == 'list_petitions' %>">
+  <%= link_to "Listado de Peticiones", petitions_path, class:'prueba'%>
+</li>
+<li class="list-group-item <%= 'active' if @location[:sub_menu] == 'create_petitions' %>">
+  <%= link_to "Crear Peticion", new_petition_path,class:'prueba' %>
+</li>
+<% elsif current_user.has_role?(:admin) %>
+<li class="list-group-item <%= 'active' if @location[:sub_menu] == 'list_offers' %>">
+  <%= link_to "Listado de Peticiones", petitions_path, class:'prueba' %>
+</li>
+<% end %>
