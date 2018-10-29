@@ -1,0 +1,27 @@
+<div class="shadow bg-white rounded">
+  <div class="card border-light mb-3">
+    <div class="card-header text-success">Mis Registros</div>
+    <div class="card-body">
+      <table class="table table-bordered">
+        <thead>
+          <tr>      
+            <th scope="col">Nombre Reciclador</th>
+            <th scope="col">Cantidad Material Registrado</th>
+            <th scope="col">Fuente</th>
+            <th scope="col">Fecha de Registro</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @recycling.each do |f|%>
+          <tr>
+            <td><%=f.user.username%></td>
+            <td><%=f.weight%></td>
+            <td><%=f.source_id%></td>
+            <td><%=f.created_at.strftime("%Y %m %d")%></td>
+          </tr>
+          <% end%>
+        </tbody>
+    </table>
+    </div>
+  </div>
+</div>

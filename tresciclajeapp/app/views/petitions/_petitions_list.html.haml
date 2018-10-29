@@ -1,0 +1,52 @@
+.panel.panel-default
+  .panel-heading
+    - if (current_user.has_role?(:buyer))
+      %h3 Mis Peticiones Registradas
+    - else
+      %h3 Peticiones Registradas
+  .panel-body
+    - if (@petitions.empty?)
+      .bs-callout.bs-callout-danger
+        %h4
+          No Existen Peticiones Registradas
+    - else
+      %table.table.table-bordered
+        %thead
+          - if (current_user.has_role?(:admin))
+            %th Registrada Por:
+          %th Material
+          %th Categoria
+          %th Cantidad Inicial Requerida
+          %th Cantidad Restante Requerida
+          %th Direccion de Envio
+          %th Estado
+          - if (current_user.has_role?(:buyer))
+            %th Accion
+        %tbody
+          - @petitions.each do |f|
+            %tr
+              - if (current_user.has_role?(:admin))
+                %td
+                  = f.created_by.username
+              %td
+                = f.category&.material&.name
+              %td
+                = f.category&.name
+              %td
+                = f.initial_amount
+              %td
+                = f.actual_amount
+              %td
+                = f.shipping_address
+              %td
+                = f.status
+              - if (current_user.has_role?(:buyer))
+                %td
+                  -if (f.status == "ABIERTA")
+                    = link_to(petition_path(f), class: 'btn btn-raised btn-info',
+                                                                title: 'Buscar Ofertas', 'data-toggle' => 'tooltip', 'data-placement' => 'right')  do
+                      %i.material-icons search
+                  -else
+                  = link_to(petition_invoices_path(f), class: 'btn btn-raised btn-primary',
+                                                              title: 'Mostrar Compras', 'data-toggle' => 'tooltip', 'data-placement' => 'right')  do
+                    %i.material-icons monetization_on

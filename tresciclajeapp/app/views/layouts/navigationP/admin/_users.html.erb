@@ -1,0 +1,8 @@
+<% if current_user.has_role?(:admin) %>
+  <li class="list-group-item <%= 'active' if @location[:sub_menu] == 'users_list' %>">
+    <%= link_to "Listado de usuarios", core_users_path, class:'prueba'%>
+  </li>
+  <li class="list-group-item <%= 'active' if @location[:sub_menu] == 'users_new' %>">
+    <%= link_to "Crear usuario", new_core_user_path, class:'prueba' %>
+  </li>
+<% end %>

@@ -1,0 +1,29 @@
+.container
+  .container
+  .row
+    .col-md-3
+    
+      = link_to image_tag("LogoTresciclaje.png", width:"250"), root_path
+    .col-md-9
+     
+      .panel-body
+        - if flash[:error]
+          .alert.alert-danger{:role => "alert"}
+            %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+              %span{"aria-hidden" => "true"} ×
+            = flash[:error]
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .form-group
+            %br/
+            %br/
+            = f.label :email
+            %br/
+            = f.email_field :email, autofocus: true,class: 'form-control', placeholder: "Nombre de la Empresa o Asociación"
+          .form-group
+            = f.label :password, 'Clave'
+            %br/
+            = f.password_field :password, autocomplete: "off", class: 'form-control',placeholder: "Ingresa tu Contraseña"
+          .actions
+            %center
+              = f.submit "Ingresar", class: 'btn btn-success'
+        = render "devise/shared/links"

@@ -1,0 +1,15 @@
+<% if current_user.has_role?(:admin) %>
+<li class="list-group-item <%= 'active' if @location[:sub_menu] == 'list_materials' %>">
+  <%= link_to "Materiales", materials_path, class:'prueba'%>
+</li>
+<li class="list-group-item <%= 'active' if @location[:sub_menu] == 'create_amounts' %>">
+  <%= link_to "Agregar Cantidades", new_amounts_path, class:'prueba' %>
+</li>
+<li class="list-group-item <%= 'active' if @location[:sub_menu] == 'edit_amounts ' %>">
+  <%= link_to "Editar Cantidades", edit_source_path, class:'prueba' %>
+</li>
+<li class="list-group-item <%= 'active' if @location[:sub_menu] == 'create_billing' %>">
+  <%= link_to "Facturación", new_timetable_path, class:'prueba' %>
+</li>
+
+<% end %>

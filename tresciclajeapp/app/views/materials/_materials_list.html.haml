@@ -1,0 +1,20 @@
+.panel.panel-default
+  .panel-heading
+    %h3 Materiales
+  .panel-body
+    - if (@materials.empty?)
+      .bs-callout.bs-callout-danger
+        %h4
+          No tiene registro de materiales
+    - else
+      %table.table.table-bordered
+        %thead
+          %th Código Material
+          %th Nombre Material
+        %tbody
+          - @materials.each do |f|
+            %tr
+              %td
+                = f.id
+              %td
+                = f.name

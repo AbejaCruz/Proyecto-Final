@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>    
+    <title>Tresciclaje Plataforma</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <%=render 'layouts/home_partials/navbar'%>
+    <!-- / Page Content -->
+    <div class='container-fluid home-container'>
+      <div class='container'>
+        <div class='row'>
+          <div class='col-lg-12'>
+            <center>
+              <h1 class='home-page'>¡Bienvenido a Tresciclaje!</h1>
+              <h3>La plataforma de compraventa de material reciclable para tú negocio</h3>
+              <!-- -# %iframe{:allowfullscreen => "", :frameborder => "0", :height => "486", :src => "https://www.youtube.com/embed/TGLRxQLmwLc?rel=0&autoplay=1", :width => "1280"} -->
+
+            </center>
+          </div>
+        </div>
+      </div>
+      <!-- Familias -->
+      <div class='container'>
+        <div class='row'>
+          <div class='col-lg-12'>
+            <br>
+            <br>
+            <center>
+              <hr class='style15'>
+              <br>
+              <p class='familia'>
+                Nuestro material ha sido captado por familias de recicladores que forman parte
+                <br>
+                de las asociaciones de recicladores del país.
+              </p>
+              <hr class='style16'>
+            </center>
+          </div>
+        </div>
+      </div>
+      <!-- fin familias -->
+      <div class='container'>
+        <div class="row">
+          <div class="col-sm-3">
+            <center>
+              <%=image_tag("Icono_Plástico.png", width:"150",height:"auto")%>
+              <h1 class="home-page">PLÁSTICOS</h1>
+              <div class="container1">
+                <h2 class="home-page">Pet</h2>
+                <h2 class="home-page">Hdpe</h2>
+                <h2 class="home-page">PVC</h2>
+                <h2 class="home-page">LDPE</h2>
+                <h2 class="home-page">PP</h2>
+                <h2 class="home-page">Ps</h2>
+                <h2 class="home-page">Otros</h2>
+                <button type="button" class="button btn-v btn-ver">Ver más</button>
+                </br>
+                </br>
+              </div>
+            </center>
+          </div>
+
+          <div class="col-sm-3">
+            <center>
+              <%=image_tag("Icono_Celulosa.png", width:"150",height:"auto")%>
+              <h1 class="home-page">CELULOSA</h1>
+              <div class="container1">
+                <h2 class="home-page">Periódico</h2>
+                <h2 class="home-page">Revista</h2>
+                <h2 class="home-page">Archivo</h2>
+                <h2 class="home-page">Cartón Corrugado</h2>
+                <h2 class="home-page">Caja Plegadiza</h2>
+                <h2 class="home-page"></h2><br>
+                <h2 class="home-page"></h2>
+                <br>
+                  <button type="button" class="button btn-v btn-ver">Ver más</button>
+                </br>
+                </br>
+              </div>
+            </center>
+          </div>
+
+          <div class="col-sm-3">
+            <center>
+              <%=image_tag("Icono_Ferroso.png", width:"150",height:"auto")%>
+              <h1 class="home-page">FERROSO</h1>
+              <div class="container1">
+                <h2 class="home-page">chatarra</h2>
+                <h2 class="home-page">Alumini Clausen</h2>
+                <h2 class="home-page">Aluminio Perfumero</h2>
+                <h2 class="home-page">Hierro</h2>
+                <h2 class="home-page">Acero</h2>
+                <h2 class="home-page">Cobre</h2>
+                <h2 class="home-page"></h2>
+                <br>
+                  <button type="button" class="button btn-v btn-ver">Ver más</button>
+                </br>
+                </br>
+              </div>
+            </center>
+          </div>
+
+          <div class="col-sm-3">
+            <center>
+              <%=image_tag("Icono_Vidrio.png", width:"150",height:"auto")%>
+              <h1 class="home-page">VIDRIO</h1>
+              <div class="container1">
+                <h2 class="home-page">Transparente</h2>
+                <h2 class="home-page">Verde</h2>
+                <h2 class="home-page">Ambar</h2>
+                <h2 class="home-page">Aguardienteras</h2>
+                <h2 class="home-page">Vineras</h2>
+                <h2 class="home-page"></h2>
+                <h2 class="home-page"></h2><br>
+                <br>
+                  <button type="button" class="button btn-v btn-ver">Ver más</button>
+                </br>
+                </br>
+              </div>
+            </center>
+          </div>
+        </div>
+        </br>
+        </br>
+      </div>
+
+      <div class='container-fluid contac'>
+        <div class='row'>
+         <div class='col-lg-9 text-center'>
+          <p class='large'>
+            ¿Quieres tener tu propio usuario para poder vender y/o comprar material reciclable?
+            <br>
+            <b>
+            ¡ESCRÍBENOS!
+            </b>
+          </p>
+         </div>
+         <div class='col-lg-3 justify-content-center'>
+          <br>
+          <%= link_to "CONTACTO", new_contact_path, class: 'btn-c btn-contacto'%>          
+         </div>
+        </div>
+      </div>
+      <%= render 'layouts/home_partials/footer'%>
+    </div>
+  </body>
+</html>

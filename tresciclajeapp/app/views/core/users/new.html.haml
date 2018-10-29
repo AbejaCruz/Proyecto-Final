@@ -1,0 +1,71 @@
+.shadow.bg-white.rounded
+  .card.border-light.mb-3
+    .card-header.text-success
+      Crear nuevo usuario
+    .card-body
+      = form_for @user, url: {action: "create"}, method: 'post' do |f|
+        - if flash[:success_record]
+          .alert.alert-success{:role => "alert"}
+            %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+              %span{"aria-hidden" => "true"} ×
+            %h4.alert-heading Bien Hecho!
+            %h5= flash[:success_record]
+        - if flash[:user_errors]
+          .alert.alert-danger{:role => "alert"}
+            %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+              %span{"aria-hidden" => "true"} ×
+            %h4.alert-heading Errores:
+            %ul.collection
+              - flash[:user_errors].each do |error|
+                %li.collection-item
+                  - error[1].each do |message|
+                    =message
+        .form-group.row.justify-content-md-center
+          .form-group.col-md-6
+            = f.label :username, "Nombre de la Empresa", class: "control-label"
+            = f.text_field :username, class: "form-control"
+          .form-group.col-md-6
+            = f.label :nit, "N.I.T", class: "control-label"
+            = f.text_field :nit, class: "form-control"
+        .form-group.row.justify-content-md-center
+          .form-group.col-md-6
+            = f.label :description,"Quiénes Somos", class: "control-label"
+            = f.text_field :description, class: "form-control"
+          .form-group.col-md-6
+            = f.label :email,"Email Empresa-Representante", class: "control-label"
+            = f.text_field :email, class: "form-control"
+        .form-group.row.justify-content-md-center
+          .form-group.col-md-6
+            = f.label :telefonos,"Telefonos de Contacto", class: "control-label"
+            = f.text_field :phone, class: "form-control"
+          .form-group.col-md-6
+            = f.label :address,"Dirección", class: "control-label"
+            = f.text_field :address, class: "form-control"            
+        .form-group.row.justify-content-md-center
+          .form-group.col-md-6
+            = f.label :department, 'Departamento'
+            = collection_select('',:department, Department.all, :id, :name, {prompt: 'Seleccione un Departamento de la lista'}, {class: 'form-control'})
+          .form-group.col-md-6
+            = f.label :city_id, 'Ciudad'
+            = f.grouped_collection_select(:city_id, Department.order(:name), :cities, :name, :id, :name, {prompt: 'Seleccione un Departamento de la lista'}, {class: 'form-control'})
+        .form-group.row.justify-content-md-center
+          .form-group.col-md-6
+            = f.label :zone_id, 'Zona'
+            = f.collection_select(:zone_id, Zone.all, :id, :name, {prompt: 'Seleccione un Departamento de la lista'}, {class: 'form-control'})
+          .form-group.col-md-6
+            = f.label :Constraseña, class: "control-label"
+            = f.password_field :password, class: "form-control"            
+        .form-group.row.justify-content-md-center
+          .form-group.col-md-6
+            = f.label :photo, "Imagen", class: "control-label"
+            = f.file_field :photo, class: "form-control"
+          .form-group.col-md-6
+            -if current_user.has_role?(:admin)
+              = f.label :rol, "Rol(Inicial)", class: "control-label"
+              = select_tag(:role, options_for_select([['Asosiacion','supplier'],['Transformador','buyer'],['Administrador','admin'],['Reciclador','recycler']],'Asosiacion'), { class: "form-control"})
+            -if current_user.has_role?(:supplier)
+              = f.label :rol, "Rol", class: "control-label"
+              = select_tag(:role, options_for_select([['Reciclador','recycler']],'Reciclador'), { class: "form-control"})
+        .form-group.row.justify-content-md-end      
+          = f.submit "Crear Usuario", class: "btn btn-success", id: "userform"
+          = render 'back_button'

@@ -1,0 +1,33 @@
+.panel.panel-default
+  .panel-heading
+    %h3 Nuevo Material
+  .panel-body
+    = form_for :material, url: materials_path  do |f|
+      - if flash[:success_record]
+        .alert.alert-success{:role => "alert"}
+          %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+            %span{"aria-hidden" => "true"} ×
+          %h4.alert-heading Bien Hecho!
+          %h5= flash[:success_record]
+      - if flash[:material_errors]
+        .alert.alert-danger{:role => "alert"}
+          %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+            %span{"aria-hidden" => "true"} ×
+          %h4.alert-heading Errores:
+          %ul.collection
+            - flash[:material_errors].each do |error|
+              %li.collection-item
+                - error[1].each do |message|
+                  =message
+      .form-group
+        = f.label :name, "Nombre del Material", class: "control-label"
+      .form-group
+        = f.text_field :name, class: "form-control", placeholder: "PLASTICO"
+      .form-group
+      = button_tag( :class => "btn btn-success") do
+        %i.material-icons present_to_all
+        = content_tag(:strong, 'Guardar')
+
+
+= render 'materials_list'
+= render 'back_button'
